@@ -7,9 +7,7 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import {
   ArrowBack,
-  ArrowDownward,
   ArrowForward,
-  ArrowUpward,
   Group as GroupIcon,
 } from '@mui/icons-material';
 import { IconButton, Paper, Typography } from '@mui/material';
@@ -49,8 +47,6 @@ const GroupContainer: React.FC<GroupContainerProps> = ({
   tabIndex,
   'aria-grabbed': ariaGrabbed,
   'aria-label': ariaLabel,
-  onMoveGroupUp,
-  onMoveGroupDown,
   onMoveGroupLeft,
   onMoveGroupRight,
   moveStudentWithinGroup,
@@ -118,44 +114,26 @@ const GroupContainer: React.FC<GroupContainerProps> = ({
             justifyContent: 'space-between',
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <IconButton
-              aria-label="Move group up"
-              onClick={onMoveGroupUp}
-              size="small"
-            >
-              <ArrowUpward fontSize="small" />
-            </IconButton>
-            <IconButton
-              aria-label="Move group down"
-              onClick={onMoveGroupDown}
-              size="small"
-            >
-              <ArrowDownward fontSize="small" />
-            </IconButton>
-          </div>
+          <IconButton
+            aria-label="Move group left"
+            onClick={onMoveGroupLeft}
+            size="small"
+          >
+            <ArrowBack fontSize="small" />
+          </IconButton>
           <div style={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
             <GroupIcon fontSize="small" />
             <Typography variant="h6" sx={{ mb: 0, color: '#334155', ml: 0.5 }}>
               Group {originalIndex + 1} ({group.students.length} students)
             </Typography>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <IconButton
-              aria-label="Move group left"
-              onClick={onMoveGroupLeft}
-              size="small"
-            >
-              <ArrowBack fontSize="small" />
-            </IconButton>
-            <IconButton
-              aria-label="Move group right"
-              onClick={onMoveGroupRight}
-              size="small"
-            >
-              <ArrowForward fontSize="small" />
-            </IconButton>
-          </div>
+          <IconButton
+            aria-label="Move group right"
+            onClick={onMoveGroupRight}
+            size="small"
+          >
+            <ArrowForward fontSize="small" />
+          </IconButton>
         </div>
         <div
           ref={setDroppableRef}
